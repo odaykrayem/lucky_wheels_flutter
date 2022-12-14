@@ -5,14 +5,21 @@ import '../constants/dimensions.dart';
 
 class CustomProgressIndicator extends StatelessWidget {
   const CustomProgressIndicator(
-      {Key? key, required this.percent, required this.centerText})
+      {Key? key,
+      required this.percent,
+      required this.centerText,
+      required this.fontSize,
+      this.radius})
       : super(key: key);
   final double percent;
   final String centerText;
+  final double? fontSize;
+  final double? radius;
+
   @override
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
-      radius: Dimensions.radius20 * 6,
+      radius: radius ?? Dimensions.radius20 * 6,
       lineWidth: 18.0,
       animation: false,
       addAutomaticKeepAlive: false,
@@ -24,8 +31,10 @@ class CustomProgressIndicator extends StatelessWidget {
       rotateLinearGradient: true,
       center: Text(
         centerText,
-        style: const TextStyle(
-            fontSize: 30, color: Colors.white, fontWeight: FontWeight.w600),
+        style: TextStyle(
+            fontSize: fontSize,
+            color: Colors.white,
+            fontWeight: FontWeight.w600),
       ),
       linearGradient: LinearGradient(colors: [
         AppColors.cyan_1,

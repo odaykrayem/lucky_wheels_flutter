@@ -46,7 +46,7 @@ class SignInPage extends StatelessWidget {
     }
 
     return Container(
-      decoration: BackGroundGradient.background1,
+      decoration: BoxDecoration(gradient: BackGroundGradient.background1),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: GetBuilder<AuthController>(builder: (authController) {

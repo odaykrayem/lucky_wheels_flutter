@@ -35,4 +35,8 @@ class AppColors {
   static final Color textColor = const Color(0xFF332d2b);
   static final Color mainBlackColor = const Color(0xFF332d2b);
   static final Color yeallowColor = const Color(0xFFffd379);
+  static final Color gradient_btn_10 = const Color(0xFFeb8e7f);
+  static final Color gradient_btn_11 = const Color(0xFFd160a2);
+  static final Color gradient_btn_12 = const Color(0xFFc05fbe);
+  static final Color gradient_btn_13 = const Color(0xFFd14da1);
 }

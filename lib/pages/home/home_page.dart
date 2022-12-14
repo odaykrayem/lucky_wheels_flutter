@@ -6,6 +6,9 @@ import 'package:lucky_wheels_flutter/constants/dimensions.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:lucky_wheels_flutter/pages/auth/sign_in_page.dart';
 import 'package:lucky_wheels_flutter/pages/home/timer_screen.dart';
+import 'package:lucky_wheels_flutter/pages/home/wallet_screen.dart';
+
+import 'profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,22 +31,23 @@ class _HomePageState extends State<HomePage> {
     Duration duration = const Duration();
     Map<_SelectedTab, Widget> screens = {
       _SelectedTab.home: TimerScreen(),
-      _SelectedTab.favorite: SignInPage()
+      _SelectedTab.profile: ProfileScreen(),
+      _SelectedTab.balance: WalletScreen(),
     };
     return SafeArea(
       child: Container(
-        decoration: BackGroundGradient.background1,
+        decoration: BoxDecoration(gradient: BackGroundGradient.background1),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           extendBody: true,
-          appBar: AppBar(
-            leading: Icon(
-              Icons.interests_rounded,
-              size: Dimensions.iconSize16 * 2.5,
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
+          // appBar: AppBar(
+          //   leading: Icon(
+          //     Icons.interests_rounded,
+          //     size: Dimensions.iconSize16 * 2.5,
+          //   ),
+          //   backgroundColor: Colors.transparent,
+          //   elevation: 0,
+          // ),
           body: screens[_selectedTab],
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.only(bottom: 5),
@@ -88,4 +92,4 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-enum _SelectedTab { home, favorite, search, person }
+enum _SelectedTab { home, balance, contests, profile }

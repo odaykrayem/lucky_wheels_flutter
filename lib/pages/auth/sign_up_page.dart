@@ -110,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
     }
 
     return Container(
-      decoration: BackGroundGradient.background1,
+      decoration: BoxDecoration(gradient: BackGroundGradient.background1),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: GetBuilder<AuthController>(builder: (authController) {
@@ -184,16 +184,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                         ],
-                      ),
-                      SizedBox(
-                        height: Dimensions.height20,
-                      ),
-                      AppTextField(
-                        textController: emailController,
-                        hintText: 'email'.tr,
-                        icon: Icons.email,
-                        hintFontSize: Dimensions.font20,
-                        isEmail: true,
                       ),
                       SizedBox(
                         height: Dimensions.height20,

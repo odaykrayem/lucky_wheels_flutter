@@ -36,7 +36,13 @@ Map<String, String> arabic = {
   "signIn": "تسجيل الدخول",
   "dontHaveAnAccount": "ليس لديك حساب",
   "create": "إنشاء",
-  "": "",
-  "": "",
-  "": "",
+  "spin": "تدوير",
+  "getMorePoints": "احصل على نقاط إضافية",
+  "balance": "الرصيد",
+  "transferPointsToBalance": "تحويل النقاط إلى رصيد",
+  "withdrawBalance": "سحب الرصيد",
+  "logout": "تسجيل الخروج",
+  "referralsList": "لائحة الدعوات",
+  "inviteYourFriendsToJoinTheAppAndWinMorePoints":
+      "قم بدعوة أصدقائك للاشتراك بالتطبيق /n واحصل على المزيد من النقاط",
 };

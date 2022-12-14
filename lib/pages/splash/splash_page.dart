@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BackGroundGradient.background1,
+      decoration: BoxDecoration(gradient: BackGroundGradient.background1),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: firstAnimationEnd

@@ -3,10 +3,15 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:get/get.dart';
 import 'package:lucky_wheels_flutter/constants/background_grad.dart';
 import 'package:lucky_wheels_flutter/constants/dimensions.dart';
+import 'package:lucky_wheels_flutter/widgets/app_icon.dart';
+import 'package:lucky_wheels_flutter/widgets/big_text.dart';
 import 'package:lucky_wheels_flutter/widgets/blurred_card.dart';
+import 'package:lucky_wheels_flutter/widgets/blurred_texticon_widget.dart';
 import 'package:lucky_wheels_flutter/widgets/card_background.dart';
 import 'package:lucky_wheels_flutter/widgets/custom_button_1.dart';
 import 'package:lucky_wheels_flutter/base/custom_loader.dart';
+import 'package:lucky_wheels_flutter/widgets/glass_container.dart';
+import '../../constants/colors.dart';
 import '../../constants/custom_values.dart';
 import '../../constants/prefs_constants.dart';
 import '../../routes/route_helper.dart';
@@ -47,7 +52,7 @@ class _TimerScreenState extends State<TimerScreen> {
     Duration duration = const Duration();
     return Container(
       height: Dimensions.screenHeight,
-      decoration: BackGroundGradient.background1,
+      decoration: BoxDecoration(gradient: BackGroundGradient.background1),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -66,7 +71,7 @@ class _TimerScreenState extends State<TimerScreen> {
               const SizedBox(
                 height: 20,
               ),
-              CardBackground(
+              GlassContainer(
                 height: Dimensions.height30 * 13,
                 marginH: Dimensions.width20 + Dimensions.width15,
                 child: Column(
@@ -76,9 +81,10 @@ class _TimerScreenState extends State<TimerScreen> {
                       stream: FlutterBackgroundService().on('update'),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
-                          return const CustomProgressIndicator(
+                          return CustomProgressIndicator(
                             centerText: "00:00:00",
                             percent: 0,
+                            fontSize: Dimensions.font16 * 2.5,
                           );
                         }
                         final data = snapshot.data!;
@@ -92,6 +98,7 @@ class _TimerScreenState extends State<TimerScreen> {
                               (currentStep * 100 / CustomValues.TIMER) / 100,
                           centerText:
                               DurationFormatter.durationToTime(duration),
+                          fontSize: Dimensions.font16 * 2.5,
                         ));
                       },
                     ),
@@ -104,11 +111,24 @@ class _TimerScreenState extends State<TimerScreen> {
                     CustomButton1(
                       borderRadius: 20,
                       width: Dimensions.width45 * 8,
-                      height: Dimensions.height30 * 3,
-                      text: "spin",
-                      fontSize: 30,
+                      height: Dimensions.height30 * 2.5,
+                      text: 'spin'.tr,
+                      textColor: AppColors.mainColor,
+                      fontSize: Dimensions.font16 * 2.5,
                       icon: Icons.speed_outlined,
-                      iconSize: 40,
+                      iconSize: Dimensions.iconSize16 * 2.5,
+                      iconColor: AppColors.mainColor,
+                      linearGradient: LinearGradient(
+                          begin: Alignment.centerRight,
+                          end: Alignment.centerLeft,
+                          colors: [
+                            AppColors.gradient_purple_1.withOpacity(0.5),
+                            AppColors.gradient_purple_2.withOpacity(0.5),
+                            AppColors.gradient_purple_3.withOpacity(0.5),
+                            AppColors.gradient_purple_4.withOpacity(0.5),
+                            AppColors.gradient_purple_5.withOpacity(0.5),
+                            AppColors.gradient_purple_6.withOpacity(0.5),
+                          ]),
                       onPressed: () {
                         // FlutterBackgroundService().startService();
                         // FlutterBackgroundService().invoke("setAsForeground");
@@ -118,15 +138,115 @@ class _TimerScreenState extends State<TimerScreen> {
                   ],
                 ),
               ),
-              BlurredCard(
-                cardHeight: Dimensions.height60,
+              GlassContainer(
+                height: Dimensions.height60,
                 marginH: Dimensions.width20 + Dimensions.width15,
-                marginV: Dimensions.height20,
-                width: 50,
-                height: 50,
-                child: Text('fff'),
+                marginV: Dimensions.height15,
                 borderRadius: 50,
-              )
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.width30),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'getMorePoints'.tr,
+                          style: TextStyle(
+                              // color: Colors.white.withOpacity(0.8),
+                              color: AppColors.gradient_purple_6,
+                              fontSize: Dimensions.font16 * 1.5,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        CustomButton1(
+                          onPressed: () {},
+                          height: Dimensions.height45,
+                          width: Dimensions.width30 * 6,
+                          text: '${'extra'.tr}\$',
+                          fontSize: Dimensions.font24,
+                          linearGradient: BackGroundGradient.backgroundBtn1,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              BlurredCard(
+                height: Dimensions.height60 * 2.5,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BigText(
+                          text: 'referralsList'.tr,
+                          color: Colors.white,
+                        ),
+                        BigText(
+                          text: 'inviteYourFriendsToJoinTheAppAndWinMorePoints'
+                              .tr,
+                          maxLines: 2,
+                          color: Colors.white,
+                          overflow: TextOverflow.visible,
+                        ),
+                      ],
+                    ),
+                    GlassContainer(
+                      height: Dimensions.height60 * 1.8,
+                      width: Dimensions.height60 * 1.8,
+                      borderRadius: 360,
+                      child: Center(
+                        child: AppIcon(
+                          image: 'assets/image/referrals_img.png',
+                          size: Dimensions.height60 * 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              BlurredCard(
+                height: Dimensions.height60 * 2.5,
+                marginV: Dimensions.height15,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BigText(
+                          text: 'referralsList'.tr,
+                          color: Colors.white,
+                        ),
+                        BigText(
+                          text: 'inviteYourFriendsToJoinTheAppAndWinMorePoints'
+                              .tr,
+                          maxLines: 2,
+                          color: Colors.white,
+                          overflow: TextOverflow.visible,
+                        ),
+                      ],
+                    ),
+                    GlassContainer(
+                      height: Dimensions.height60 * 1.8,
+                      width: Dimensions.height60 * 1.8,
+                      borderRadius: 360,
+                      child: Center(
+                        child: AppIcon(
+                          image: 'assets/image/share_img.png',
+                          size: Dimensions.height60 * 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: Dimensions.height25 * 3,
+              ),
             ],
           ),
         ),

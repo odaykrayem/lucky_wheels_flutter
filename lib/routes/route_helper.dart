@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:lucky_wheels_flutter/pages/auth/sign_in_page.dart';
 import 'package:lucky_wheels_flutter/pages/auth/sign_up_page.dart';
-import 'package:lucky_wheels_flutter/pages/home/wheel_page.dart';
+import 'package:lucky_wheels_flutter/pages/home/wheel_screen.dart';
 import 'package:lucky_wheels_flutter/pages/splash/splash_page.dart';
 
 import '../pages/home/home_page.dart';
@@ -39,7 +39,7 @@ class RouteHelper {
     GetPage(
         name: wheelPage,
         page: () {
-          return const WheelPage();
+          return const WheelScreen();
         },
         transition: Transition.fadeIn),
     GetPage(

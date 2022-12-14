@@ -13,7 +13,8 @@ class CustomButton1 extends StatelessWidget {
   final Color iconColor;
   final double iconSize;
   final String text;
-  final IconData icon;
+  final IconData? icon;
+  final LinearGradient? linearGradient;
 
   const CustomButton1({
     Key? key,
@@ -26,7 +27,8 @@ class CustomButton1 extends StatelessWidget {
     this.iconColor = Colors.white,
     this.iconSize = 25,
     required this.text,
-    required this.icon,
+    this.icon,
+    this.linearGradient,
   }) : super(key: key);
 
   @override
@@ -38,20 +40,23 @@ class CustomButton1 extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-          gradient: LinearGradient(
-              begin: Alignment.centerRight,
-              end: Alignment.centerLeft,
-              colors: [
-                AppColors.gradient_btn_1,
-                AppColors.gradient_btn_2,
-                AppColors.gradient_btn_3,
-                AppColors.gradient_btn_4,
-                AppColors.gradient_btn_5,
-                AppColors.gradient_btn_6,
-              ]),
+          gradient: linearGradient ??
+              LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: [
+                    AppColors.gradient_btn_1,
+                    AppColors.gradient_btn_2,
+                    AppColors.gradient_btn_3,
+                    AppColors.gradient_btn_4,
+                    AppColors.gradient_btn_5,
+                    AppColors.gradient_btn_6,
+                  ]),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: icon == null
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
@@ -61,7 +66,11 @@ class CustomButton1 extends StatelessWidget {
             // const SizedBox(
             //   width: 20,
             // ),
-            Icon(icon, size: iconSize, color: iconColor)
+            icon == null
+                ? const SizedBox(
+                    width: 5,
+                  )
+                : Icon(icon, size: iconSize, color: iconColor)
           ],
         ),
       ),

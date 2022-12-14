@@ -36,4 +36,13 @@ Map<String, String> english = {
   "signIn": "Sign in",
   "dontHaveAnAccount": "Don't have an account",
   "create": "Create",
+  "spin": "Spin",
+  "getMorePoints": "Get more points",
+  "balance": "Balance",
+  "transferPointsToBalance": "Transfer points to balance",
+  "withdrawBalance": "Withdraw balance",
+  "logout": "Logout",
+  "referralsList": "Referrals list",
+  "inviteYourFriendsToJoinTheAppAndWinMorePoints":
+      "invite your friends to join the app \nand win more points",
 };

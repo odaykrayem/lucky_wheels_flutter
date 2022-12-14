@@ -8,20 +8,16 @@ import '../constants/dimensions.dart';
 class BlurredCard extends StatelessWidget {
   const BlurredCard({
     Key? key,
-    required this.width,
-    required this.height,
     this.borderRadius = 0,
     required this.child,
     this.background,
-    this.cardWidth,
-    required this.cardHeight,
+    this.width,
+    required this.height,
     this.marginH = 0,
     this.marginV = 0,
   }) : super(key: key);
 
-  final double? cardWidth;
-  final double cardHeight;
-  final double width;
+  final double? width;
   final double height;
   final double marginH;
   final double marginV;
@@ -32,10 +28,10 @@ class BlurredCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: cardWidth,
-      height: cardHeight,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
-        color: AppColors.gradient_purple_3.withOpacity(0.2),
+        color: background ?? AppColors.gradient_purple_3.withOpacity(0.2),
         borderRadius: BorderRadius.circular(borderRadius == 0
             ? Dimensions.radius20 + Dimensions.radius15
             : borderRadius),
@@ -59,8 +55,9 @@ class BlurredCard extends StatelessWidget {
                 ),
                 child: Container(
                   alignment: Alignment.center,
-                  width: cardWidth,
-                  height: cardHeight,
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
+                  width: width,
+                  height: height,
                   child: child,
                 ),
               ),

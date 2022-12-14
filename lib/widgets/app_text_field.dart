@@ -9,8 +9,6 @@ class AppTextField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final bool isObscure;
-
-  //BY Me
   final bool isEmail;
   final bool isNumber;
   final bool isDone;

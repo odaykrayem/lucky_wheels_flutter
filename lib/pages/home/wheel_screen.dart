@@ -7,14 +7,14 @@ import 'package:lucky_wheels_flutter/constants/colors.dart';
 import 'package:lucky_wheels_flutter/constants/custom_values.dart';
 import '../../constants/dimensions.dart';
 
-class WheelPage extends StatefulWidget {
-  const WheelPage({Key? key}) : super(key: key);
+class WheelScreen extends StatefulWidget {
+  const WheelScreen({Key? key}) : super(key: key);
 
   @override
-  WheelPageState createState() => WheelPageState();
+  WheelScreenState createState() => WheelScreenState();
 }
 
-class WheelPageState extends State<WheelPage> {
+class WheelScreenState extends State<WheelScreen> {
   StreamController<int> controller = StreamController<int>();
   int wheelValue = 0;
 
@@ -29,7 +29,7 @@ class WheelPageState extends State<WheelPage> {
     const items = CustomValues.WHEEL_ITEMS;
 
     return Container(
-      decoration: BackGroundGradient.background1,
+      decoration: BoxDecoration(gradient: BackGroundGradient.background1),
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
