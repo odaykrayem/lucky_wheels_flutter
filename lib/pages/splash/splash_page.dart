@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lucky_wheels_flutter/constants/app_constants.dart';
+import 'package:lucky_wheels_flutter/utils/cacheHelper.dart';
 import 'dart:async';
 import '../../constants/background_grad.dart';
 import '../../constants/custom_values.dart';
@@ -58,7 +60,13 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(
       const Duration(seconds: 5),
-      () => Get.offNamed(RouteHelper.getInitial()),
+      () {
+        if (CacheHelper.hasKey(key: AppConstants.USER_DATA_KEY) == true) {
+          Get.offNamed(RouteHelper.getInitial());
+        } else {
+          Get.offNamed(RouteHelper.getSignInPage());
+        }
+      },
     );
   }
 

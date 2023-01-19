@@ -33,8 +33,11 @@ class AuthRepo {
     return await sharedPreferences.setString(AppConstants.TOKEN, token);
   }
 
-  Future<String> getUserToken() async {
-    return await sharedPreferences.getString(AppConstants.TOKEN) ?? 'None';
+  // Future<String> getUserToken() async {
+  //   return await sharedPreferences.getString(AppConstants.TOKEN) ?? 'None';
+  // }
+  String getUserToken() {
+    return sharedPreferences.getString(AppConstants.TOKEN) ?? 'None';
   }
 
   bool userLoggedIn() {

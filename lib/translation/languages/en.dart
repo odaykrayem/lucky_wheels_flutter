@@ -45,4 +45,18 @@ Map<String, String> english = {
   "referralsList": "Referrals list",
   "inviteYourFriendsToJoinTheAppAndWinMorePoints":
       "invite your friends to join the app \nand win more points",
+  "loginSuccessfully": "Logged in successfully",
+  "youHaveGot": "You have got",
+  "points": "Points",
+  "participate": "participate",
+  "participateContestSuccessfully": "Participate Contest Successfully",
+  "youDontHaveEnoughPoints": "You don't have enough points",
+  "theMinimumPointsIs": "The minimum points is :",
+  "youDontHaveEnoughBlance": "You don't have enough blance",
+  "theMinimumBalanceIs": "The minimum balance is :",
+  "transfer": "Transfer",
+  "withdraw": "Withdraw",
+  "yourWalletCode": "Your Wallet Code",
+  "pleaseEnterYourWalletcode": "Please enter your Wallet Code",
+  "withdrawlsList": "Withdrawls List",
 };

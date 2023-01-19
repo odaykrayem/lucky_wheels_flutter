@@ -6,7 +6,7 @@ import 'package:lucky_wheels_flutter/constants/custom_values.dart';
 import '../constants/dimensions.dart';
 import '../widgets/big_text.dart';
 
-void showCustomSbackBar(String message,
+void showCustomSnackBar(String message,
     {bool isError = true, String title = CustomValues.APP_NAME}) {
   //titleText and mesasgeText are customization
   Get.snackbar(title, message,

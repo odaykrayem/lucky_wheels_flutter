@@ -1,19 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lucky_wheels_flutter/base/showWithdrawalDialog.dart';
+import 'package:lucky_wheels_flutter/base/show_custom_snackbar.dart';
 import 'package:lucky_wheels_flutter/widgets/blurred_texticon_widget.dart';
 import 'package:lucky_wheels_flutter/widgets/glass_container.dart';
 import 'package:lucky_wheels_flutter/widgets/huge_text.dart';
-
 import '../../base/custom_loader.dart';
 import '../../constants/colors.dart';
 import '../../constants/dimensions.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/user_controller.dart';
 import '../../routes/route_helper.dart';
+import '../../base/showTransferPointsDialog.dart';
 import '../../widgets/app_icon.dart';
 import '../../widgets/big_text.dart';
 
@@ -29,8 +27,9 @@ class WalletScreen extends StatelessWidget {
     }
     return Scaffold(
       backgroundColor: Colors.transparent,
+      // resizeToAvoidBottomInset: true,
       body: GetBuilder<UserController>(builder: (userController) {
-        return !_userLoggedIn
+        return _userLoggedIn
             ? (!userController.isLoading
                 ? Container(
                     width: double.maxFinite,
@@ -41,21 +40,41 @@ class WalletScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         GlassContainer(
+                          height: Dimensions.height15 * 16,
+                          width: Dimensions.height15 * 16,
+                          borderRadius: 360,
                           child: Center(
                               child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               HugeText(text: 'balance'.tr),
                               SizedBox(height: Dimensions.height20),
-                              HugeText(text: "500", size: Dimensions.font26),
+                              HugeText(
+                                  text: '${userController.userModel!.balance}',
+                                  size: Dimensions.font26),
                             ],
                           )),
-                          height: Dimensions.height15 * 16,
-                          width: Dimensions.height15 * 16,
-                          borderRadius: 360,
                         ),
                         SizedBox(
-                          height: Dimensions.height20 * 4,
+                          height: Dimensions.height20 * 2,
+                        ),
+                        GlassContainer(
+                          height: Dimensions.height15 * 5,
+                          width: Dimensions.width45 * 13,
+                          borderRadius: 45,
+                          child: Center(
+                              child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              HugeText(text: 'points'.tr),
+                              HugeText(
+                                  text: '${userController.userModel!.points}',
+                                  size: Dimensions.font26),
+                            ],
+                          )),
+                        ),
+                        SizedBox(
+                          height: Dimensions.height20 * 3,
                         ),
                         Expanded(
                           child: SingleChildScrollView(
@@ -74,7 +93,17 @@ class WalletScreen extends StatelessWidget {
                                       text: 'transferPointsToBalance'.tr,
                                       fontWeight: FontWeight.w600,
                                     ),
-                                    onPressed: () {}),
+                                    onPressed: () async {
+                                      await userController.getMinPoints();
+                                      int minPoints = userController.minPoints;
+                                      if (userController.userModel!.points <
+                                          minPoints) {
+                                        showCustomSnackBar(
+                                            '${'youDontHaveEnoughPoints'.tr}${'theMinimumPointsIs'.tr}${userController.minPoints}');
+                                      } else {
+                                        showTransferPointsDialog(context);
+                                      }
+                                    }),
                                 SizedBox(
                                   height: Dimensions.height30,
                                 ),
@@ -91,7 +120,18 @@ class WalletScreen extends StatelessWidget {
                                       text: 'withdrawBalance'.tr,
                                       fontWeight: FontWeight.w600,
                                     ),
-                                    onPressed: () {}),
+                                    onPressed: () async {
+                                      await userController.getMinBalance();
+                                      double minBalance =
+                                          userController.minBalance;
+                                      if (userController.userModel!.balance <
+                                          minBalance) {
+                                        showCustomSnackBar(
+                                            '${'youDontHaveEnoughBlance'.tr}${'theMinimumBalanceIs'.tr}${userController.minBalance}');
+                                      } else {
+                                        showWithdrawalDialog(context);
+                                      }
+                                    }),
                                 SizedBox(
                                   height: Dimensions.height30,
                                 ),
@@ -105,7 +145,7 @@ class WalletScreen extends StatelessWidget {
                                       size: Dimensions.height10 * 6,
                                     ),
                                     bigText: BigText(
-                                      text: 'withdrawBalance'.tr,
+                                      text: 'withdrawlsList'.tr,
                                       fontWeight: FontWeight.w600,
                                     ),
                                     onPressed: () {})

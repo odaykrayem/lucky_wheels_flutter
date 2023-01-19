@@ -7,7 +7,7 @@ import '../constants/dimensions.dart';
 class AppTextField extends StatelessWidget {
   final TextEditingController textController;
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final bool isObscure;
   final bool isEmail;
   final bool isNumber;
@@ -58,10 +58,12 @@ class AppTextField extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(
               fontSize: hintFontSize == 0 ? Dimensions.font22 : hintFontSize),
-          prefixIcon: Icon(
-            icon,
-            color: AppColors.ligh_purple_1,
-          ),
+          prefixIcon: icon != null
+              ? Icon(
+                  icon,
+                  color: AppColors.light_purple_1,
+                )
+              : null,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
               Dimensions.radius15,

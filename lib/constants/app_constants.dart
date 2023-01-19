@@ -2,22 +2,27 @@ class AppConstants {
   static const String appName = 'LuckyWheels';
   static const int appVersion = 1;
 
-  static const String BASE_URL =
-      'http://192.168.43.130/mvs.bslmeiyu.com/public';
+  // static const String BASE_URL =
+  //     'http://192.168.43.130/mvs.bslmeiyu.com/public';
+  static const String BASE_URL = 'http://192.168.43.130:8000';
+  // static const String BASE_URL = 'http://192.168.1.107:8000';
+
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
-  static const String RECOMMENDED_PRODUCT_URI = '/api/v1/products/recommended';
   // static const String DRINKS_URI = '/api/v1/products/drinks';
   static const String UPLOAD_URL = '/uploads/';
 
   //User And Auth Endpoints
-  static const String REGISTRATION_URI = '/api/v1/auth/register';
-  static const String LOGIN_URI = '/api/v1/auth/login';
-  static const String USER_INFO_URI = '/api/v1/customer/info';
-  //new
-  static const String USER_ADDRESS = 'user_address';
-  static const String ADD_USER_ADDRESS = '/api/v1/customer/address/add';
-  static const String ADDRESS_LIST_URI = '/api/v1/customer/address/list';
-  static const String GEOCODE_URI = '/api/v1/config/geocode-api';
+  static const String REGISTRATION_URI = '/api/auth/register';
+  static const String LOGIN_URI = '/api/auth/login';
+  static const String WHEEL_POINTS_URI = '/api/v1/wheel_points';
+  static const String CONTEST_LIST = '/api/v1/contest_list';
+  static const String PARTICIPATE_CONTEST = '/api/v1/participants';
+  static const String MIN_POINTS = '/api/v1/get_min_points';
+  static const String MIN_BALANCE = '/api/v1/get_min_balance';
+  static const String TRANSFER_POINTS = '/api/v1/transfer_points';
+  static const String WITHDRAW_BALANCE = '/api/v1/withdraw_balance';
+
+  static const String USER_INFO_URI = '/api/v1/user_info';
 
   static const String TOKEN = 'DBToken';
   static const String PHONE = 'phone';
@@ -27,4 +32,6 @@ class AppConstants {
   static const String COUNTRY_CODE_KEY = 'countryCode';
   static const String CART_LIST_KEY = 'cart-list';
   static const String CART_HISTORY_LIST_KEY = 'cart-history-list';
+  static const String USER_DATA_KEY = 'user-data';
+  static const String USER_TOKEN_KEY = 'user-token';
 }

@@ -1,13 +1,21 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lucky_wheels_flutter/constants/background_grad.dart';
 import 'package:lucky_wheels_flutter/constants/colors.dart';
 import 'package:lucky_wheels_flutter/constants/dimensions.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:lucky_wheels_flutter/controllers/auth_controller.dart';
 import 'package:lucky_wheels_flutter/pages/auth/sign_in_page.dart';
 import 'package:lucky_wheels_flutter/pages/home/timer_screen.dart';
 import 'package:lucky_wheels_flutter/pages/home/wallet_screen.dart';
 
+import '../../constants/app_constants.dart';
+import '../../models/user_model.dart';
+import '../../utils/cacheHelper.dart';
+import 'contest_screen.dart';
 import 'profile_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,7 +41,18 @@ class _HomePageState extends State<HomePage> {
       _SelectedTab.home: TimerScreen(),
       _SelectedTab.profile: ProfileScreen(),
       _SelectedTab.balance: WalletScreen(),
+      _SelectedTab.contests: ContestScreen()
     };
+    if (CacheHelper.hasKey(key: AppConstants.USER_DATA_KEY)) {
+      UserModel user2 = UserModel.fromJson(
+          jsonDecode(CacheHelper.getData(key: AppConstants.USER_DATA_KEY)));
+      debugPrint('userHome :  ${user2.toJson()}');
+      debugPrint(
+          'userHome : TOKEN:  ${Get.find<AuthController>().getUserToken()}');
+    }
+
+    // CacheHelper.removeData(key: AppConstants.USER_DATA_KEY);
+    // debugPrint('${CacheHelper.hasKey(key: AppConstants.USER_DATA_KEY)}');
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(gradient: BackGroundGradient.background1),
@@ -80,7 +99,7 @@ class _HomePageState extends State<HomePage> {
 
                 /// Profile
                 DotNavigationBarItem(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     selectedColor: AppColors.selected_item,
                     unselectedColor: AppColors.unselected_item),
               ],

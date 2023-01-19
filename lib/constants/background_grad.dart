@@ -26,6 +26,18 @@ class BackGroundGradient {
         AppColors.gradient_purple_6,
       ]);
 
+  static LinearGradient backgroundlight = LinearGradient(
+      begin: Alignment.bottomRight,
+      end: Alignment.topLeft,
+      colors: [
+        AppColors.light_purple_2.withOpacity(0.7),
+        AppColors.light_purple_1.withOpacity(0.7),
+        AppColors.gradient_purple_6.withOpacity(0.7),
+        AppColors.gradient_purple_5.withOpacity(0.7),
+        AppColors.gradient_purple_4.withOpacity(0.7),
+        AppColors.gradient_purple_3.withOpacity(0.7),
+      ]);
+
   static LinearGradient backgroundBtn1 = LinearGradient(
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,

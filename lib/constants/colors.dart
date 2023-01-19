@@ -9,7 +9,7 @@ class AppColors {
   static final Color gradient_purple_4 = const Color(0xFF40244d);
   static final Color gradient_purple_5 = const Color(0xFF512e4f);
   static final Color gradient_purple_6 = const Color(0xFF59354f);
-  static final Color ligh_purple_1 = const Color(0xFF5b3850);
+  static final Color light_purple_1 = const Color(0xFF5b3850);
   static final Color light_purple_2 = const Color(0xFF684860);
   static final Color light_purple_3 = const Color(0xFF624160);
   static final Color cyan_1 = const Color(0xFF7ebfbe);

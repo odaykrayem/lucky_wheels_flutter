@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lucky_wheels_flutter/constants/app_constants.dart';
+import 'package:lucky_wheels_flutter/models/user_model.dart';
+import 'package:lucky_wheels_flutter/utils/cacheHelper.dart';
 
 import '../../base/custom_loader.dart';
 import '../../constants/colors.dart';
@@ -13,19 +18,26 @@ import '../../widgets/app_icon.dart';
 import '../../widgets/big_text.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
+  late UserModel userModel;
   @override
   Widget build(BuildContext context) {
     bool _userLoggedIn = Get.find<AuthController>().userLoggedIn();
+    debugPrint('profile :: ${_userLoggedIn}');
     if (_userLoggedIn) {
       Get.find<UserController>().getUserInfo();
-      debugPrint('accpage: user has looged in');
+      // Get.find<UserController>().getOfflineUserInfo();
+      // debugPrint('accpage: user has looged in');
+      // UserModel userModel = UserModel.fromJson(
+      //     jsonDecode(CacheHelper.getData(key: AppConstants.USER_DATA_KEY)));
+      // debugPrint('profile :: ${userModel.toJson().toString()}');
     }
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: GetBuilder<UserController>(builder: (userController) {
-        return !_userLoggedIn
+        return _userLoggedIn
             ? (!userController.isLoading
                 ? Container(
                     width: double.maxFinite,
@@ -90,7 +102,8 @@ class ProfileScreen extends StatelessWidget {
                                     size: Dimensions.height10 * 6,
                                   ),
                                   bigText: BigText(
-                                    text: 'User Name',
+                                    text: userController.userModel!.firstName +
+                                        userController.userModel!.lastName,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -109,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
                                     size: Dimensions.height10 * 6,
                                   ),
                                   bigText: BigText(
-                                    text: '00963435453',
+                                    text: userController.userModel!.phone,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -128,8 +141,8 @@ class ProfileScreen extends StatelessWidget {
                                     size: Dimensions.height10 * 6,
                                   ),
                                   bigText: BigText(
-                                    // text: 'userController.userModel!.phone',
-                                    text: 'kjdmbshdhwhvdyaydvsdk',
+                                    text:
+                                        userController.userModel!.referralCode,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -154,7 +167,8 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                   bigText: BigText(
                                     // text: 'messages'.tr,
-                                    text: 'refTimes: '.tr + '10',
+                                    text:
+                                        '${'refTimes: '.tr}${userController.userModel!.refTimes}',
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -200,57 +214,53 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   )
                 : const CustomLoader())
-            : Container(
-                child: Center(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
+            : Center(
+                child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: double.maxFinite,
+                    // height: Dimensions.height20 * 8,
+                    height: Dimensions.height20 * 10,
+                    margin: EdgeInsets.only(
+                      left: Dimensions.width20,
+                      right: Dimensions.width20,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/image/signintocontinue.png'),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getSignInPage());
+                    },
+                    child: Container(
                       width: double.maxFinite,
-                      // height: Dimensions.height20 * 8,
-                      height: Dimensions.height20 * 10,
+                      height: Dimensions.height20 * 5,
                       margin: EdgeInsets.only(
                         left: Dimensions.width20,
                         right: Dimensions.width20,
                       ),
                       decoration: BoxDecoration(
+                        color: AppColors.mainColor,
                         borderRadius:
                             BorderRadius.circular(Dimensions.radius20),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image:
-                              AssetImage('assets/image/signintocontinue.png'),
+                      ),
+                      child: Center(
+                        child: BigText(
+                          text: 'signIn'.tr,
+                          color: Colors.white,
+                          size: Dimensions.font26,
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(RouteHelper.getSignInPage());
-                      },
-                      child: Container(
-                        width: double.maxFinite,
-                        height: Dimensions.height20 * 5,
-                        margin: EdgeInsets.only(
-                          left: Dimensions.width20,
-                          right: Dimensions.width20,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.mainColor,
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius20),
-                        ),
-                        child: Center(
-                          child: BigText(
-                            text: 'signIn'.tr,
-                            color: Colors.white,
-                            size: Dimensions.font26,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-              );
+                  ),
+                ],
+              ));
       }),
     );
   }

@@ -22,24 +22,27 @@ class SignInPage extends StatelessWidget {
     var passwordController = TextEditingController();
     var phoneController = TextEditingController();
 
+    phoneController.text = '9999999999';
+    passwordController.text = '000000';
+
     void _login(AuthController authController) {
       String phone = phoneController.text.trim();
       String password = passwordController.text.trim();
 
       if (phone.isEmpty) {
-        showCustomSbackBar('typeInYourPhone'.tr, title: 'phone'.tr);
+        showCustomSnackBar('typeInYourPhone'.tr, title: 'phone'.tr);
       } else if (password.isEmpty) {
-        showCustomSbackBar('typeInYourPassword'.tr, title: 'password'.tr);
+        showCustomSnackBar('typeInYourPassword'.tr, title: 'password'.tr);
       } else if (password.length < 6) {
-        showCustomSbackBar('passwordcanNotBeLessThanSixCharacters'.tr,
+        showCustomSnackBar('passwordcanNotBeLessThanSixCharacters'.tr,
             title: 'invalidPassword'.tr);
       } else {
         authController.login(phone, password).then((status) {
           if (status.isSuccess) {
-            // showCustomSbackBar('success login 11');
+            showCustomSnackBar(status.message);
             Get.offAllNamed(RouteHelper.getInitial());
           } else {
-            showCustomSbackBar(status.message);
+            showCustomSnackBar(status.message);
           }
         });
       }

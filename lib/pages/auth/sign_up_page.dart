@@ -10,6 +10,8 @@ import '../../base/show_custom_snackbar.dart';
 import '../../constants/colors.dart';
 import '../../constants/dimensions.dart';
 import '../../controllers/auth_controller.dart';
+import '../../models/signup_body_model.dart';
+import '../../routes/route_helper.dart';
 import '../../widgets/app_text_field.dart';
 import '../../widgets/big_text.dart';
 
@@ -30,6 +32,11 @@ class _SignUpPageState extends State<SignUpPage> {
     var firstNameController = TextEditingController();
     var lastNameController = TextEditingController();
     var regRefCodeController = TextEditingController();
+    firstNameController.text = 'new';
+    lastNameController.text = 'new';
+    phoneController.text = '9999999999';
+    passwordController.text = '000000';
+    confirmPasswordController.text = '000000';
     FocusNode phoneNode = FocusNode();
     String? countryCode;
     String? code;
@@ -47,10 +54,11 @@ class _SignUpPageState extends State<SignUpPage> {
     void _registration(AuthController authController) {
       debugPrint(phoneController.text);
       debugPrint(countryCode);
+
       String firstName = firstNameController.text.trim();
       String lastName = lastNameController.text.trim();
       String phone = phoneController.text.trim();
-      String email = emailController.text.trim();
+      // String email = emailController.text.trim();
       String regRefCode = regRefCodeController.text.trim();
       String password = passwordController.text.trim();
       String confirmPassword = confirmPasswordController.text.trim();
@@ -59,52 +67,57 @@ class _SignUpPageState extends State<SignUpPage> {
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
       if (firstName.isEmpty) {
-        showCustomSbackBar('typeInYourFirstName'.tr, title: 'name'.tr);
+        showCustomSnackBar('typeInYourFirstName'.tr, title: 'name'.tr);
       } else if (firstName.length < 3) {
-        showCustomSbackBar('firstNameMustBeThree'.tr,
+        showCustomSnackBar('firstNameMustBeThree'.tr,
             title: 'invalidFirstName'.tr);
       } else if (lastName.isEmpty) {
-        showCustomSbackBar('typeInYourLastNumber'.tr, title: 'name'.tr);
+        showCustomSnackBar('typeInYourLastNumber'.tr, title: 'name'.tr);
       } else if (lastName.length < 3) {
-        showCustomSbackBar('lastNameMustBeThree'.tr,
+        showCustomSnackBar('lastNameMustBeThree'.tr,
             title: 'invalidLastName'.tr);
       } else if (phone.isEmpty) {
-        showCustomSbackBar('typeInYourPhoneNumber'.tr, title: 'phoneNumber'.tr);
+        showCustomSnackBar('typeInYourPhoneNumber'.tr, title: 'phoneNumber'.tr);
       } else if (phone.length < 9) {
-        showCustomSbackBar('phoneNumberMustBeNine'.tr,
+        showCustomSnackBar('phoneNumberMustBeNine'.tr,
             title: 'invalidPhoneNumber'.tr);
-      } else if (email.isEmpty) {
-        showCustomSbackBar('typeInYourEmail'.tr, title: 'email'.tr);
-      } else if (!emailReg.hasMatch(email.trim())) {
-        showCustomSbackBar("${'emailMustBeLike'.tr} example@something.com",
-            title: 'invalidEmail'.tr);
-      } else if (password.isEmpty) {
-        showCustomSbackBar('typeInYourPassword'.tr, title: 'password'.tr);
+      }
+      //  else if (email.isEmpty) {
+      //   showCustomSnackBar('typeInYourEmail'.tr, title: 'email'.tr);
+      // } else if (!emailReg.hasMatch(email.trim())) {
+      //   showCustomSnackBar("${'emailMustBeLike'.tr} example@something.com",
+      //       title: 'invalidEmail'.tr);
+      // }
+      else if (password.isEmpty) {
+        showCustomSnackBar('typeInYourPassword'.tr, title: 'password'.tr);
       } else if (password.length < 6) {
-        showCustomSbackBar('passwordcanNotBeLessThanSixCharacters'.tr,
+        showCustomSnackBar('passwordcanNotBeLessThanSixCharacters'.tr,
             title: 'invalidPassword'.tr);
       } else if (confirmPassword.isEmpty) {
-        showCustomSbackBar('typeInPasswordConfirmation'.tr,
+        showCustomSnackBar('typeInPasswordConfirmation'.tr,
             title: 'password'.tr);
       } else if (password != confirmPassword) {
-        showCustomSbackBar('PasswordAndPasswordConfirmationAreNotTheSame'.tr,
+        showCustomSnackBar('PasswordAndPasswordConfirmationAreNotTheSame'.tr,
             title: 'password'.tr);
       } else {
-        // showCustomSbackBar('perfect'.tr, title: 'perfect'.tr);
-        // SignUpBody signUpBody = SignUpBody(
-        //   name: name,
-        //   phone: phone,
-        //   email: email,
-        //   password: password,
-        // );
-        // authController.registration(signUpBody).then((status) {
-        //   if (status.isSuccess) {
-        //     debugPrint('success registeration');
-        //     Get.offNamed(RouteHelper.getInitial());
-        //   } else {
-        //     showCustomSbackBar(status.message);
-        //   }
-        // });
+        showCustomSnackBar('perfect'.tr, title: 'perfect'.tr);
+        debugPrint(regRefCode);
+        SignUpBody signUpBody = SignUpBody(
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+            // email: email,
+            password: password,
+            regReferralCode: regRefCode);
+        authController.registration(signUpBody).then((status) {
+          if (status.isSuccess) {
+            debugPrint('success registeration');
+            Get.offNamed(RouteHelper.getInitial());
+          } else {
+            showCustomSnackBar(status.message);
+            debugPrint(status.message);
+          }
+        });
         // debugPrint(signUpBody.toString());
       }
     }

@@ -45,4 +45,18 @@ Map<String, String> arabic = {
   "referralsList": "لائحة الدعوات",
   "inviteYourFriendsToJoinTheAppAndWinMorePoints":
       "قم بدعوة أصدقائك للاشتراك بالتطبيق /n واحصل على المزيد من النقاط",
+  "loginSuccessfully": "تم تسجيل الدخول بنجاح",
+  "youHaveGot": "لقد حصلت على ",
+  "points": "نقاط",
+  "participate": "مشاركة في المسابقة",
+  "participateContestSuccessfully": "تمت المشاركة في المسابقة بنجاح",
+  "youDontHaveEnoughPoints": "ليس لديك نقاط كافية للتحويل",
+  "theMinimumPointsIs": "الحد الأدنى للنقاط هو :",
+  "youDontHaveEnoughBlance": "ليس لديك رصيد كاف للتحويل",
+  "theMinimumBalanceIs": "الحد الأدنى للرصيد هو :",
+  "transfer": "تحويل",
+  "withdraw": "سحب",
+  "yourWalletCode": "رمز المحفظة الخاصة بك",
+  "pleaseEnterYourWalletcode": "من فضلك أدخل رمز المحفظة",
+  "withdrawlsList": "لائحة السحوبات",
 };
