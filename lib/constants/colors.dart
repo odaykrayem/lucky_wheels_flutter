@@ -39,4 +39,15 @@ class AppColors {
   static final Color gradient_btn_11 = const Color(0xFFd160a2);
   static final Color gradient_btn_12 = const Color(0xFFc05fbe);
   static final Color gradient_btn_13 = const Color(0xFFd14da1);
+  static final Color gradient_blue_1 = const Color(0xFF3475ab);
+  static final Color gradient_blue_2 = const Color(0xFF2e669f);
+  static final Color gradient_blue_3 = const Color(0xFF24406f);
+  static final Color gradient_blue_4 = const Color(0xFF1f2c59);
+  static final Color gradient_blue_5 = const Color(0xFF1c2351);
+
+  static final Color background_purple_1 = const Color(0xFF340a7a);
+  static final Color background_purple_2 = const Color(0xFF260a5e);
+  static final Color background_purple_3 = const Color(0xFF230e4f);
+  static final Color background_purple_4 = const Color(0xFF1e0c40);
+  static final Color background_purple_5 = const Color(0xFF1c0d34);
 }

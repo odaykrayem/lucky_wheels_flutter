@@ -16,6 +16,7 @@ class BlurredCard extends StatelessWidget {
     this.marginH = 0,
     this.marginV = 0,
     this.paddingH,
+    this.paddingV,
   }) : super(key: key);
 
   final double? width;
@@ -26,6 +27,7 @@ class BlurredCard extends StatelessWidget {
   final Widget child;
   final Color? background;
   final double? paddingH;
+  final double? paddingV;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +60,8 @@ class BlurredCard extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(
-                      horizontal: paddingH ?? Dimensions.width20),
+                      horizontal: paddingH ?? Dimensions.width20,
+                      vertical: paddingV ?? 0),
                   width: width,
                   height: height,
                   child: child,

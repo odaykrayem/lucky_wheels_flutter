@@ -5,30 +5,27 @@ import 'package:lucky_wheels_flutter/pages/home/wheel_screen.dart';
 import 'package:lucky_wheels_flutter/pages/splash/splash_page.dart';
 
 import '../pages/home/home_page.dart';
+import '../pages/home/rewards_screen.dart';
 
 class RouteHelper {
   static const String splashPage = "/splash-page";
   static const String initial = "/";
   static const String wheelPage = "/wheel-page";
   static const String recommendedFood = "/recommended-food";
-  static const String cartPage = "/cart-page";
   static const String signIn = "/sign-in";
   static const String signUp = "/sign-up";
-  static const String addAddress = "/add-address";
-  static const String pickAddressMap = "/pick-address";
+  static const String rewardsPage = "/rewards-page";
 
   static String getSplashPage() => splashPage;
   static String getInitial() => initial;
   static String getWheelPage() => wheelPage;
+  static String getRewardsPage() => rewardsPage;
 
   static String getRecommendedFood(int pageId, String page) =>
       '$recommendedFood?pageId=$pageId&page=$page';
 
-  static String getCartPage() => '$cartPage';
   static String getSignInPage() => '$signIn';
   static String getSignUpPage() => '$signUp';
-  static String getAddAddressPage() => '$addAddress';
-  static String getpickAddAddressPage() => '$pickAddressMap';
 
   static List<GetPage> routes = [
     GetPage(name: splashPage, page: () => const SplashScreen()),
@@ -40,6 +37,12 @@ class RouteHelper {
         name: wheelPage,
         page: () {
           return const WheelScreen();
+        },
+        transition: Transition.fadeIn),
+    GetPage(
+        name: rewardsPage,
+        page: () {
+          return const RewardsScreen();
         },
         transition: Transition.fadeIn),
     GetPage(

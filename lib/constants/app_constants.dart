@@ -4,11 +4,9 @@ class AppConstants {
 
   // static const String BASE_URL =
   //     'http://192.168.43.130/mvs.bslmeiyu.com/public';
-  static const String BASE_URL = 'http://192.168.43.130:8000';
-  // static const String BASE_URL = 'http://192.168.1.107:8000';
+  // static const String BASE_URL = 'http://192.168.43.130:8000';
+  static const String BASE_URL = 'http://192.168.1.107:8000';
 
-  static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
-  // static const String DRINKS_URI = '/api/v1/products/drinks';
   static const String UPLOAD_URL = '/uploads/';
 
   //User And Auth Endpoints
@@ -16,11 +14,13 @@ class AppConstants {
   static const String LOGIN_URI = '/api/auth/login';
   static const String WHEEL_POINTS_URI = '/api/v1/wheel_points';
   static const String CONTEST_LIST = '/api/v1/contest_list';
+  static const String REWARD_LIST = '/api/v1/reward_list';
   static const String PARTICIPATE_CONTEST = '/api/v1/participants';
   static const String MIN_POINTS = '/api/v1/get_min_points';
   static const String MIN_BALANCE = '/api/v1/get_min_balance';
   static const String TRANSFER_POINTS = '/api/v1/transfer_points';
   static const String WITHDRAW_BALANCE = '/api/v1/withdraw_balance';
+  static const String REWARD = '/api/v1/reward';
 
   static const String USER_INFO_URI = '/api/v1/user_info';
 

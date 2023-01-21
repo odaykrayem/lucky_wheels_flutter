@@ -59,15 +59,14 @@ class _TimerScreenState extends State<TimerScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // CardBackground(height: Dimensions.height30 * 3),
-              Container(
-                height: Dimensions.height30 + Dimensions.height15,
-                margin: EdgeInsets.symmetric(
-                  horizontal: Dimensions.width20 + Dimensions.width15,
-                  vertical: Dimensions.height10 / 2,
-                ),
-                child: HugeText(text: 'Here goes news'),
-              ),
+              // Container(
+              //   height: Dimensions.height30 + Dimensions.height15,
+              //   margin: EdgeInsets.symmetric(
+              //     horizontal: Dimensions.width20 + Dimensions.width15,
+              //     vertical: Dimensions.height10 / 2,
+              //   ),
+              //   child: HugeText(text: 'Here goes news'),
+              // ),
               const SizedBox(
                 height: 20,
               ),
@@ -139,7 +138,7 @@ class _TimerScreenState extends State<TimerScreen> {
                 ),
               ),
               GlassContainer(
-                height: Dimensions.height60,
+                height: Dimensions.height60 + Dimensions.height15,
                 marginH: Dimensions.width20 + Dimensions.width15,
                 marginV: Dimensions.height15,
                 borderRadius: 50,
@@ -154,17 +153,20 @@ class _TimerScreenState extends State<TimerScreen> {
                           'getMorePoints'.tr,
                           style: TextStyle(
                               // color: Colors.white.withOpacity(0.8),
-                              color: AppColors.gradient_purple_6,
+                              color: AppColors.gradient_blue_5,
                               fontSize: Dimensions.font16 * 1.5,
                               fontWeight: FontWeight.bold),
                         ),
                         CustomButton1(
-                          onPressed: () {},
-                          height: Dimensions.height45,
-                          width: Dimensions.width30 * 6,
-                          text: '${'extra'.tr}\$',
+                          onPressed: () {
+                            Get.toNamed(RouteHelper.getRewardsPage());
+                          },
+                          height: Dimensions.height45 + Dimensions.height10,
+                          width: Dimensions.width30 * 8,
+                          text: '${'extra'.tr} \$',
                           fontSize: Dimensions.font24,
-                          linearGradient: BackGroundGradient.backgroundBtn1,
+                          linearGradient:
+                              BackGroundGradient.backgroundlightBlue,
                         )
                       ],
                     ),

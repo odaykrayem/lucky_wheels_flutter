@@ -59,4 +59,9 @@ Map<String, String> arabic = {
   "yourWalletCode": "رمز المحفظة الخاصة بك",
   "pleaseEnterYourWalletcode": "من فضلك أدخل رمز المحفظة",
   "withdrawlsList": "لائحة السحوبات",
+  "getYourRewardEvery": "احصل على مكافئتك كل",
+  "hours": "ساعات",
+  "getReward": "حصل المكافئة",
+  "rewardAddedToYourPoints": "تم إضافة المكافئة إلى نقاطك",
+  "extra": "إضافي"
 };

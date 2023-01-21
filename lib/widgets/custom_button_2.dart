@@ -10,6 +10,7 @@ class CustomButton2 extends StatelessWidget {
   final VoidCallback? onPressed;
   final Color textColor;
   final double fontSize;
+  final FontWeight? fontWeight;
   final Color iconColor;
   final double iconSize;
   final String text;
@@ -25,6 +26,7 @@ class CustomButton2 extends StatelessWidget {
     this.height = 44.0,
     this.textColor = Colors.black,
     this.fontSize = 25,
+    this.fontWeight,
     this.iconColor = Colors.white,
     this.iconSize = 25,
     required this.text,
@@ -52,7 +54,11 @@ class CustomButton2 extends StatelessWidget {
           children: [
             Text(
               text,
-              style: TextStyle(fontSize: fontSize, color: textColor),
+              style: TextStyle(
+                fontSize: fontSize,
+                color: textColor,
+                fontWeight: fontWeight ?? FontWeight.w400,
+              ),
             ),
             // const SizedBox(
             //   width: 20,

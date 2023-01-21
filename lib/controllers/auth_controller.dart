@@ -79,6 +79,10 @@ class AuthController extends GetxController implements GetxService {
         responseModel = ResponseModel(false, 'catche error');
       }
     } else {
+      debugPrint('auth else : ${response.bodyBytes}');
+      debugPrint('auth else : ${response.body}');
+      debugPrint('auth else : ${response.statusCode}');
+      debugPrint('auth else : ${response.statusText}');
       try {
         if (response.body['errors'] != null) {
           responseModel = ResponseModel(

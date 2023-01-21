@@ -121,6 +121,7 @@ class _ContestScreenState extends State<ContestScreen> {
       height: Dimensions.height60 * 3.5,
       marginV: Dimensions.height10,
       paddingH: 0,
+      paddingV: 0,
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

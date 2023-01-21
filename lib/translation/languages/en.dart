@@ -59,4 +59,9 @@ Map<String, String> english = {
   "yourWalletCode": "Your Wallet Code",
   "pleaseEnterYourWalletcode": "Please enter your Wallet Code",
   "withdrawlsList": "Withdrawls List",
+  "getYourRewardEvery": "Get your Reward every",
+  "hours": "Hours",
+  "getReward": "Get Reward",
+  "rewardAddedToYourPoints": "Reward added to your Points",
+  "extra": "Extra",
 };
